@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Onboarding Flow Shell</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="app-header">
+        <div>
+          <p class="eyebrow">Onboarding</p>
+          <h1 class="app-title">Setup Flow</h1>
+        </div>
+        <div class="progress-meta" aria-live="polite">
+          <span id="progress-label">Step 1 of 6</span>
+        </div>
+      </header>
+
+      <main class="onboarding-card" aria-labelledby="step-title">
+        <div class="progress" aria-label="Onboarding progress">
+          <div class="progress-track">
+            <div id="progress-fill" class="progress-fill"></div>
+          </div>
+          <ol id="progress-steps" class="progress-steps"></ol>
+        </div>
+
+        <section id="step-content" class="step-content">
+          <p class="step-kicker" id="step-kicker"></p>
+          <h2 id="step-title"></h2>
+          <p id="step-description"></p>
+          <div id="step-body" class="step-body"></div>
+        </section>
+
+        <nav class="actions" aria-label="Step navigation">
+          <button id="back-button" class="button button-secondary" type="button">
+            Back
+          </button>
+          <button id="next-button" class="button button-primary" type="button">
+            Next
+          </button>
+        </nav>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
