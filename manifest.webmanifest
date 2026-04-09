@@ -1,0 +1,17 @@
+{
+  "name": "Silver Pulse",
+  "short_name": "Silver Pulse",
+  "start_url": "./launch.html",
+  "display": "standalone",
+  "background_color": "#f6f5fc",
+  "theme_color": "#7a8fe3",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "./assets/logo-silver-pulse.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

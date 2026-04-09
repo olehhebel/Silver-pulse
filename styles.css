@@ -27,6 +27,14 @@ body {
     linear-gradient(180deg, #f8fbfd 0%, var(--bg) 100%);
 }
 
+body.launch-mode {
+  min-height: 100dvh;
+  background:
+    radial-gradient(circle at top center, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0) 34%),
+    linear-gradient(180deg, #8ba0ee 0%, #f4f2fb 34%, #f6f5fc 100%);
+  overscroll-behavior: none;
+}
+
 button,
 h1,
 h2,
@@ -42,6 +50,12 @@ button {
   width: min(100%, 960px);
   margin: 0 auto;
   padding: 32px 20px 48px;
+}
+
+.launch-mode .app-shell {
+  width: min(100%, 430px);
+  min-height: 100dvh;
+  padding: 0;
 }
 
 .app-header {
@@ -80,6 +94,29 @@ button {
   padding: 28px;
 }
 
+.launch-mode .app-header,
+.launch-mode .progress,
+.launch-mode .actions,
+.launch-mode .step-kicker,
+.launch-mode #step-title,
+.launch-mode #step-description {
+  display: none !important;
+}
+
+.launch-mode .onboarding-card {
+  min-height: 100dvh;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+}
+
+.launch-mode .step-content,
+.launch-mode .step-content--immersive {
+  gap: 0;
+}
+
 .progress {
   margin-bottom: 32px;
 }
@@ -102,7 +139,7 @@ button {
 
 .progress-steps {
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-columns: repeat(7, minmax(0, 1fr));
   gap: 8px;
   list-style: none;
   padding: 0;
@@ -156,6 +193,10 @@ button {
   line-height: 1.6;
 }
 
+.step-content--immersive {
+  gap: 0;
+}
+
 .step-body {
   margin-top: 8px;
   padding: 20px;
@@ -163,6 +204,25 @@ button {
   border-radius: var(--radius-md);
   border: 1px dashed #c8d3dc;
   background: linear-gradient(180deg, #fcfdfe 0%, #f6f9fb 100%);
+  will-change: transform, opacity, filter;
+  transform-origin: center center;
+}
+
+.launch-mode .step-body {
+  margin-top: 0;
+  min-height: 100dvh;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.step-body--welcome {
+  margin-top: 0;
+  padding: 0;
+  min-height: auto;
+  border: 0;
+  background: transparent;
 }
 
 .step-placeholder {
@@ -178,6 +238,680 @@ button {
 
 .placeholder-block.large {
   height: 96px;
+}
+
+.welcome-screen {
+  position: relative;
+  width: min(100%, 375px);
+  aspect-ratio: 375 / 812;
+  margin: 0 auto;
+  overflow: hidden;
+  background: #7a8fe3;
+}
+
+.welcome-screen__art {
+  position: absolute;
+  inset: 0;
+}
+
+.welcome-screen__artwork {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 112%;
+  max-width: none;
+  transform: translateX(-50%);
+}
+
+.welcome-screen__circle {
+  position: absolute;
+  display: block;
+  max-width: none;
+}
+
+.welcome-screen__circle--base {
+  top: 8.744%;
+  left: 50%;
+  width: 108.533%;
+  transform: translateX(-50%);
+}
+
+.welcome-screen__circle--outer {
+  top: 17.611%;
+  left: 50%;
+  width: 70.133%;
+  transform: translateX(-50%);
+}
+
+.welcome-screen__circle--middle {
+  top: 23.892%;
+  left: 50%;
+  width: 42.933%;
+  transform: translateX(-50%);
+}
+
+.welcome-screen__circle--inner {
+  top: 28.695%;
+  left: 50%;
+  width: 22.133%;
+  transform: translateX(-50%);
+}
+
+.welcome-screen__logo {
+  position: absolute;
+  top: 72.098%;
+  left: 50%;
+  width: 46.176%;
+  transform: translate(-50%, -50%);
+}
+
+.welcome-screen__tagline {
+  position: absolute;
+  top: 81.897%;
+  left: 50%;
+  margin: 0;
+  color: #ffffff;
+  font-family: "SF Pro Display", "Segoe UI", sans-serif;
+  font-size: 16px;
+  font-weight: 510;
+  font-variation-settings: 'wdth' 100;
+  line-height: 1.2;
+  transform: translateX(-50%);
+}
+
+/* ── Step 2 · Sign In ────────────────────────────── */
+
+.signin-screen {
+  position: relative;
+  width: min(100%, 375px);
+  aspect-ratio: 375 / 812;
+  margin: 0 auto;
+  overflow: hidden;
+  background: #7a8fe3;
+}
+
+.signin-screen__bg {
+  position: absolute;
+  top: 8.867%;
+  left: 0;
+  width: 100%;
+  height: 50.123%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.signin-screen__title {
+  position: absolute;
+  top: 55.049%;
+  left: 50%;
+  width: 74.933%;
+  margin: 0;
+  color: #ffffff;
+  font-family: "SF Pro Display", "Segoe UI", sans-serif;
+  font-size: 36px;
+  font-weight: 510;
+  font-variation-settings: 'wdth' 100;
+  line-height: 1;
+  text-align: center;
+  transform: translateX(-50%);
+}
+
+.signin-btn {
+  position: absolute;
+  left: 50%;
+  width: 74.667%;
+  height: 7.389%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border: 0;
+  border-radius: 50px;
+  cursor: pointer;
+  font-family: "SF Pro Display", "Segoe UI", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: normal;
+  transform: translateX(-50%);
+  transition: opacity 150ms ease;
+}
+
+.signin-btn:hover {
+  opacity: 0.88;
+}
+
+.signin-btn--apple {
+  top: 69.089%;
+  background: #ffffff;
+  color: #000000;
+  box-shadow:
+    0 0 3px 0 rgba(0, 0, 0, 0.08),
+    0 2px 3px 0 rgba(0, 0, 0, 0.17);
+}
+
+.signin-btn--google {
+  top: 78.695%;
+  background: #131313;
+  color: #ffffff;
+}
+
+.signin-btn__icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+}
+
+.signin-btn__icon--google {
+  width: 25px;
+  height: 26px;
+}
+
+.signin-screen__legal {
+  position: absolute;
+  top: 90.148%;
+  left: 50%;
+  width: 58.133%;
+  margin: 0;
+  text-align: center;
+  transform: translateX(-50%);
+}
+
+.signin-screen__legal-light {
+  display: block;
+  font-family: "Nunito", "Segoe UI", sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 20px;
+  color: #ffffff;
+}
+
+.signin-screen__legal-bold {
+  display: block;
+  font-family: "Nunito", "Segoe UI", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 20px;
+  color: #ffffff;
+}
+
+/* ── Step 3 · Video Intro ────────────────────────── */
+
+.video-intro-screen {
+  position: relative;
+  width: min(100%, 375px);
+  aspect-ratio: 375 / 812;
+  margin: 0 auto;
+  overflow: hidden;
+  background: #000000;
+}
+
+.video-intro-screen__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.video-intro-screen__caption {
+  position: absolute;
+  left: 50%;
+  bottom: 18.965%;
+  width: 72%;
+  margin: 0;
+  color: #ffffff;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: center;
+  transform: translateX(-50%);
+}
+
+.video-intro-screen__cta {
+  position: absolute;
+  bottom: 8.621%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 119px;
+  height: 52px;
+  padding: 0 32px;
+  background: #d5f20e;
+  color: #000000;
+  font-family: "SF Pro Display", "Segoe UI", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  font-variation-settings: 'wdth' 100;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  border: 0;
+  border-radius: 32px;
+  cursor: pointer;
+  transition: opacity 150ms ease, transform 150ms ease;
+}
+
+.video-intro-screen__cta:hover {
+  opacity: 0.9;
+  transform: translateX(-50%) translateY(-1px);
+}
+
+/* ── Step 4 · Feature Tour 1 ─────────────────────── */
+
+.feature-tour-screen {
+  position: relative;
+  width: min(100%, 375px);
+  aspect-ratio: 375 / 812;
+  margin: 0 auto;
+  overflow: hidden;
+  background: #dfdfdf;
+}
+
+.feature-tour-screen__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.feature-tour-screen__cta {
+  position: absolute;
+  bottom: 8.621%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 119px;
+  height: 52px;
+  padding: 0 32px;
+  background: #d5f20e;
+  color: #000000;
+  font-family: "SF Pro Display", "Segoe UI", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  font-variation-settings: 'wdth' 100;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  border: 0;
+  border-radius: 32px;
+  cursor: pointer;
+  transition: opacity 150ms ease, transform 150ms ease;
+}
+
+.feature-tour-screen__cta:hover {
+  opacity: 0.9;
+  transform: translateX(-50%) translateY(-1px);
+}
+
+.feature-tour-screen__pagination {
+  position: absolute;
+  bottom: 3.941%;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 48px;
+  height: 8px;
+  transform: translateX(-50%);
+}
+
+.feature-tour-screen__pagination--image {
+  display: block;
+}
+
+.feature-tour-screen__pagination-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.feature-tour-screen__dot {
+  width: 8px;
+  height: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  border-radius: 999px;
+  background: transparent;
+}
+
+.feature-tour-screen__dot--active {
+  background: #ffffff;
+}
+
+.feature-tour-screen__pagination--accent .feature-tour-screen__dot {
+  border-color: rgba(213, 242, 14, 0.95);
+}
+
+.feature-tour-screen__pagination--accent .feature-tour-screen__dot--active {
+  background: #d5f20e;
+}
+
+/* ── Step 6 · Feeling Picker ─────────────────────── */
+
+.feeling-screen {
+  position: relative;
+  width: min(100%, 375px);
+  aspect-ratio: 375 / 812;
+  min-height: 812px;
+  margin: 0 auto;
+  padding: 80px 32px 34px;
+  background: #f6f5fc;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.launch-mode .welcome-screen,
+.launch-mode .signin-screen,
+.launch-mode .video-intro-screen,
+.launch-mode .feature-tour-screen,
+.launch-mode .feeling-screen {
+  width: min(100vw, 430px);
+  min-height: 100dvh;
+  height: 100dvh;
+  aspect-ratio: auto;
+}
+
+.launch-mode .feeling-screen {
+  padding-top: max(40px, env(safe-area-inset-top, 0px) + 28px);
+  padding-bottom: max(28px, env(safe-area-inset-bottom, 0px) + 18px);
+}
+
+.feeling-screen__header {
+  position: relative;
+  z-index: 1;
+}
+
+.feeling-screen__choices {
+  position: relative;
+  z-index: 1;
+  transition: opacity 260ms ease, transform 360ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.feeling-screen__selection-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.feeling-screen__focus {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 260ms ease;
+}
+
+.feeling-screen--focused .feeling-screen__focus {
+  opacity: 1;
+}
+
+.feeling-screen--focused .feeling-screen__choices,
+.feeling-screen--animating .feeling-screen__choices {
+  pointer-events: none;
+}
+
+.feeling-screen--focused .feeling-screen__choices {
+  opacity: 0;
+  transform: scale(0.985);
+}
+
+.feeling-screen__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.feeling-screen__title {
+  width: 311px;
+  margin: 0 0 12px;
+  color: #000000;
+  font-family: "SF Pro Display", "Segoe UI", sans-serif;
+  font-size: 32px;
+  font-weight: 510;
+  font-variation-settings: 'wdth' 100;
+  line-height: 1;
+}
+
+.feeling-screen__subtitle {
+  margin: 0 0 40px;
+  color: #000000;
+  font-family: "SF Pro Display", "Segoe UI", sans-serif;
+  font-size: 16px;
+  font-weight: 510;
+  font-variation-settings: 'wdth' 100;
+  line-height: 1.2;
+}
+
+.feeling-focus-card {
+  position: absolute;
+  top: calc(261px * var(--screen-scale, 1));
+  left: calc(86px * var(--screen-scale, 1));
+  width: calc(220px * var(--screen-scale, 1));
+  height: calc(308px * var(--screen-scale, 1));
+  padding: calc(12px * var(--screen-scale, 1)) calc(12px * var(--screen-scale, 1)) calc(21px * var(--screen-scale, 1));
+  border-radius: calc(16px * var(--screen-scale, 1));
+  background: #7a8fe3;
+  box-shadow: 0 24px 54px rgba(122, 143, 227, 0.22);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(14px * var(--screen-scale, 1));
+}
+
+.feeling-focus-card__media {
+  width: calc(196px * var(--screen-scale, 1));
+  height: calc(208px * var(--screen-scale, 1));
+  overflow: hidden;
+  border-radius: calc(12px * var(--screen-scale, 1));
+  background: #d5f20e;
+}
+
+.feeling-focus-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.feeling-focus-card__label {
+  margin: 0;
+  color: #ffffff;
+  font-family: "SF Pro Display", "Segoe UI", sans-serif;
+  font-size: calc(24.11px * var(--screen-scale, 1));
+  font-weight: 510;
+  font-variation-settings: 'wdth' 100;
+  line-height: 1;
+  text-align: center;
+}
+
+.feeling-focus-card__response {
+  position: absolute;
+  top: calc(589px * var(--screen-scale, 1));
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  color: #000000;
+  font-family: "SF Pro Display", "Segoe UI", sans-serif;
+  font-size: calc(16px * var(--screen-scale, 1));
+  font-weight: 510;
+  font-variation-settings: 'wdth' 100;
+  line-height: 1.2;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.feeling-screen__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 146px);
+  gap: 16px;
+  margin-bottom: 80px;
+}
+
+.emotion-card {
+  width: 146px;
+  height: 206px;
+  padding: 8px 8px 14px;
+  border: 1px solid transparent;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 4px 4px 0 rgba(122, 143, 227, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 150ms ease, border-color 150ms ease, box-shadow 150ms ease, background-color 150ms ease;
+}
+
+.emotion-card:hover {
+  transform: translateY(-1px);
+}
+
+.emotion-card--selected {
+  border-color: #7a8fe3;
+  background: #eef1ff;
+  box-shadow: 0 8px 18px rgba(122, 143, 227, 0.22);
+}
+
+.emotion-card--ghosted {
+  opacity: 0.16;
+  transform: scale(0.93);
+  filter: blur(1px);
+}
+
+.emotion-card--flight {
+  position: absolute;
+  margin: 0;
+  z-index: 4;
+  pointer-events: none;
+  transition:
+    left 560ms cubic-bezier(0.22, 1, 0.36, 1),
+    top 560ms cubic-bezier(0.22, 1, 0.36, 1),
+    width 560ms cubic-bezier(0.22, 1, 0.36, 1),
+    height 560ms cubic-bezier(0.22, 1, 0.36, 1),
+    padding 560ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-radius 560ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 320ms ease,
+    box-shadow 320ms ease,
+    border-color 320ms ease;
+}
+
+.emotion-card--flight .emotion-card__media {
+  transition: width 560ms cubic-bezier(0.22, 1, 0.36, 1), height 560ms cubic-bezier(0.22, 1, 0.36, 1), background-color 320ms ease, border-radius 320ms ease;
+}
+
+.emotion-card--flight .emotion-card__label {
+  transition: color 320ms ease, font-size 560ms cubic-bezier(0.22, 1, 0.36, 1), line-height 560ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.emotion-card--flight-active {
+  gap: calc(14px * var(--flight-scale, 1));
+  padding: calc(12px * var(--flight-scale, 1)) calc(12px * var(--flight-scale, 1)) calc(21px * var(--flight-scale, 1));
+  border-color: transparent;
+  border-radius: calc(16px * var(--flight-scale, 1));
+  background: #7a8fe3;
+  box-shadow: 0 24px 54px rgba(122, 143, 227, 0.32);
+}
+
+.emotion-card--flight-active .emotion-card__media {
+  width: calc(196px * var(--flight-scale, 1));
+  height: calc(208px * var(--flight-scale, 1));
+  border-radius: calc(12px * var(--flight-scale, 1));
+  background: #d5f20e;
+}
+
+.emotion-card--flight-active .emotion-card__label {
+  color: #ffffff;
+  font-size: calc(24.11px * var(--flight-scale, 1));
+  line-height: 1;
+}
+
+.emotion-card__media {
+  position: relative;
+  width: 130px;
+  height: 158px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #f8faff 0%, #eef2ff 100%);
+}
+
+.emotion-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.emotion-card__label {
+  color: #000000;
+  font-family: "SF Pro Display", "Segoe UI", sans-serif;
+  font-size: 16px;
+  font-weight: 510;
+  font-variation-settings: 'wdth' 100;
+  line-height: 1;
+  text-align: center;
+}
+
+.reminder-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: 38px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.reminder-toggle__box {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #7a8fe3;
+  border-radius: 5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+}
+
+.reminder-toggle--checked .reminder-toggle__box {
+  background: #7a8fe3;
+}
+
+.reminder-toggle__check {
+  width: 10px;
+  height: 6px;
+  display: block;
+  border-left: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+  transform: rotate(-45deg) translateY(-1px);
+}
+
+.reminder-toggle__label {
+  color: #7a8fe3;
+  font-family: "SF Pro Display", "Segoe UI", sans-serif;
+  font-size: 14px;
+  font-weight: 510;
+  font-variation-settings: 'wdth' 100;
+  line-height: 1;
 }
 
 .actions {
@@ -238,6 +972,67 @@ button {
   .step-body {
     min-height: 220px;
   }
+
+  .welcome-screen {
+    width: min(100%, 335px);
+  }
+
+  .signin-screen {
+    width: min(100%, 335px);
+  }
+
+  .video-intro-screen {
+    width: min(100%, 335px);
+  }
+
+  .feature-tour-screen {
+    width: min(100%, 335px);
+  }
+
+  .feeling-screen {
+    width: min(100%, 335px);
+    min-height: auto;
+    padding: 40px 16px 24px;
+  }
+
+  .feeling-screen__title {
+    width: auto;
+    font-size: 28px;
+  }
+
+  .feeling-screen__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .feeling-focus-card__response {
+    white-space: normal;
+    width: min(100%, 240px);
+  }
+
+  .emotion-card {
+    width: 100%;
+  }
+
+  .reminder-toggle {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .launch-mode .app-shell,
+  .launch-mode .onboarding-card,
+  .launch-mode .step-content,
+  .launch-mode .step-body {
+    width: 100%;
+  }
+
+  .launch-mode .welcome-screen,
+  .launch-mode .signin-screen,
+  .launch-mode .video-intro-screen,
+  .launch-mode .feature-tour-screen,
+  .launch-mode .feeling-screen {
+    width: 100%;
+  }
 }
 
 @media (max-width: 480px) {
@@ -251,5 +1046,9 @@ button {
 
   .button {
     width: 100%;
+  }
+
+  .feeling-screen__grid {
+    grid-template-columns: 1fr;
   }
 }
